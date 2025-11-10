@@ -10,10 +10,17 @@ import {
 } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { PlaceHolderImages, type ImagePlaceholder } from '@/lib/placeholder-images';
 import { getTranslations } from 'next-intl/server';
 
-const articles = [
+type Resource = {
+  title: string;
+  category: string;
+  type: string;
+  image?: ImagePlaceholder;
+}
+
+const articles: Resource[] = [
   {
     title: 'Managing Exam Stress',
     category: 'Stress',
@@ -34,7 +41,7 @@ const articles = [
   },
 ];
 
-const videos = [
+const videos: Resource[] = [
   {
     title: '5-Minute Guided Meditation',
     category: 'Mindfulness',
@@ -49,7 +56,7 @@ const videos = [
   },
 ];
 
-const audio = [
+const audio: Resource[] = [
   {
     title: 'Relaxing Sleep Music',
     category: 'Sleep',
@@ -61,7 +68,7 @@ const audio = [
 const allResources = { articles, videos, audio };
 type ResourceCategory = keyof typeof allResources;
 
-function ResourceCard({ resource }: { resource: any }) {
+function ResourceCard({ resource }: { resource: Resource }) {
   return (
     <Card className="overflow-hidden transition-all hover:shadow-lg">
       <CardHeader className="p-0">
