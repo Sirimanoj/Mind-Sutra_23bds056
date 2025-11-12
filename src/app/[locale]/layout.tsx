@@ -12,8 +12,9 @@ export default async function LocaleLayout({
   children,
   params,
 }: LocaleLayoutProps) {
+  // The locale is now correctly typed as string from params.locale
   const messages = await getMessages();
-
+ 
   return (
     <NextIntlClientProvider locale={params.locale} messages={messages}>
       <AppLayout>
