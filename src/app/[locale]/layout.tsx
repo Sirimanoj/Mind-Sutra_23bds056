@@ -10,12 +10,12 @@ type LocaleLayoutProps = {
 
 export default async function LocaleLayout({
   children,
-  params,
+  params: {locale},
 }: LocaleLayoutProps) {
   const messages = await getMessages();
 
   return (
-    <NextIntlClientProvider locale={params.locale} messages={messages}>
+    <NextIntlClientProvider locale={locale} messages={messages}>
       <AppLayout>
         {children}
       </AppLayout>
