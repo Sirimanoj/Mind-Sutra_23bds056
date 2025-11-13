@@ -1,19 +1,25 @@
+
 import type { Metadata } from "next";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
+import { ReactNode } from "react";
 
 export const metadata: Metadata = {
   title: 'MannMitra',
   description: 'A comprehensive digital mental health support system for Indian college students with AI chatbot, counseling booking, resource hub, peer support, and admin analytics',
 };
 
+type RootLayoutProps = {
+  children: ReactNode;
+};
+
 export default function RootLayout({
   children
-}: {
-  children: React.ReactNode;
-}) {
+}: RootLayoutProps) {
   return (
-    <html>
+    <html lang="en">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

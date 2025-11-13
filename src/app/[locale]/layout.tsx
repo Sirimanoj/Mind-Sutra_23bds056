@@ -1,7 +1,10 @@
+
 import type { ReactNode } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
-import AppLayout from '../(app)/layout';
+import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar';
+import { MainNav } from '@/components/layout/main-nav';
+import { Header } from '@/components/layout/header';
 
 type LocaleLayoutProps = {
   children: ReactNode;
@@ -10,16 +13,19 @@ type LocaleLayoutProps = {
 
 export default async function LocaleLayout({
   children,
-  params,
+  params: { locale },
 }: LocaleLayoutProps) {
-  // getMessages() automatically receives the locale from the request.
-  // Passing it manually is not needed and causes an error.
   const messages = await getMessages();
-  const locale = params.locale;
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      <AppLayout>{children}</AppLayout>
+      <SidebarProvider>
+        <MainNav />
+        <SidebarInset>
+          <Header />
+          <main className="flex-1 p-4 md:p-6 lg:p-8">{children}</main>
+        </SidebarInset>
+      </SidebarProvider>
     </NextIntlClientProvider>
   );
 }
