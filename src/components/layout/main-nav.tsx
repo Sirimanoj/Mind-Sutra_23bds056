@@ -23,6 +23,11 @@ export function MainNav() {
   const pathname = usePathname();
   const t = useTranslations('Sidebar');
   const { user } = useUser();
+  
+  // Don't render sidebar on login page
+  if (pathname.includes('/login')) {
+      return null;
+  }
 
   const menuItems = [
     { href: '/dashboard', label: t('dashboard'), icon: LayoutDashboard },
@@ -32,6 +37,13 @@ export function MainNav() {
     { href: '/book-session', label: t('bookSession'), icon: CalendarCheck },
     { href: '/cbt-exercise', label: t('cbtExercise'), icon: BrainCircuit },
   ];
+
+  const getBase_pathname = (path: string) => {
+    const segments = path.split('/');
+    // handles /en/dashboard -> /dashboard
+    if (segments.length > 2) return `/${segments.slice(2).join('/')}`
+    return path;
+  }
 
   return (
       <Sidebar>
@@ -49,7 +61,7 @@ export function MainNav() {
               <SidebarMenuItem key={item.href}>
                 <Link href={item.href} passHref>
                   <SidebarMenuButton
-                    isActive={pathname.endsWith(item.href)}
+                    isActive={getBase_pathname(pathname).startsWith(item.href)}
                     tooltip={item.label}
                   >
                     <item.icon />

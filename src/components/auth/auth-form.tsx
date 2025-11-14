@@ -45,8 +45,8 @@ export function AuthForm() {
 
   const formSchema = z.object({
     name: z.string().optional(),
-    email: z.string().email(t('form.error.invalidEmail')),
-    password: z.string().min(8, t('form.error.passwordLength')),
+    email: z.string().email({ message: t('form.error.invalidEmail') }),
+    password: z.string().min(8, { message: t('form.error.passwordLength') }),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -57,13 +57,14 @@ export function AuthForm() {
   const createUserInFirestore = async (user: User, name?: string) => {
     if (!firestore) return;
     const userRef = doc(firestore, 'userAccounts', user.uid);
+    // Use setDoc with merge:true to avoid overwriting existing data if user logs in with different providers
     await setDoc(userRef, {
       id: user.uid,
       email: user.email,
       displayName: name || user.displayName || 'Anonymous User',
       role: 'student', // Default role
       languagePreference: 'en',
-    });
+    }, { merge: true });
   };
 
   const handleAuthSuccess = (user: User, name?: string) => {
@@ -74,9 +75,15 @@ export function AuthForm() {
 
   const handleAuthError = (error: any, type: 'signIn' | 'signUp') => {
     console.error(`${type} error:`, error);
+    let description = error.message;
+    if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+        description = t('signInErrorInvalid');
+    } else if (error.code === 'auth/email-already-in-use') {
+        description = t('signUpErrorEmailInUse');
+    }
     toast({
       title: type === 'signIn' ? t('signInError') : t('signUpError'),
-      description: error.message,
+      description: description,
       variant: 'destructive',
     });
   };
@@ -92,10 +99,13 @@ export function AuthForm() {
         }
         const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.password);
         await updateProfile(userCredential.user, { displayName: values.name });
+        // The onAuthStateChanged listener will handle the redirect and Firestore creation
+        // but we can call it here explicitly to be sure
         handleAuthSuccess(userCredential.user, values.name);
       } else {
         const userCredential = await signInWithEmailAndPassword(auth, values.email, values.password);
-        handleAuthSuccess(userCredential.user);
+        // onAuthStateChanged will handle the redirect
+        // handleAuthSuccess(userCredential.user);
       }
     } catch (error) {
       handleAuthError(error, activeTab === 'signin' ? 'signIn' : 'signUp');
@@ -108,8 +118,8 @@ export function AuthForm() {
     setIsGoogleLoading(true);
     const provider = new GoogleAuthProvider();
     try {
-      const result = await signInWithPopup(auth, provider);
-      handleAuthSuccess(result.user);
+      // The onAuthStateChanged listener will handle the redirect and Firestore creation
+      await signInWithPopup(auth, provider);
     } catch (error) {
       handleAuthError(error, 'signIn');
     } finally {

@@ -132,9 +132,11 @@
     "googleSignIn": "Google",
     "privacyPolicy": "By continuing, you agree to our Privacy Policy and Terms of Service.",
     "signInSuccess": "Signed in successfully!",
-    "signInError": "Sign-in failed. Please check your credentials.",
+    "signInError": "Sign-in failed",
+    "signInErrorInvalid": "Invalid email or password. Please try again.",
     "signUpSuccess": "Account created successfully! Please check your email to verify.",
-    "signUpError": "Sign-up failed. Please try again.",
+    "signUpError": "Sign-up failed",
+    "signUpErrorEmailInUse": "An account with this email already exists.",
     "passwordResetSent": "Password reset link sent to your email.",
     "passwordResetError": "Failed to send password reset email.",
     "form": {
