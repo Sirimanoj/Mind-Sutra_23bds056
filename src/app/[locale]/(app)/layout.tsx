@@ -13,7 +13,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
   return (
     <AuthGate>
       <SidebarProvider>
-        <div className="flex">
+        <div className="flex min-h-screen">
           <MainNav />
           <div className="flex-1">
             <Header />
