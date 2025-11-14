@@ -88,7 +88,7 @@
     "updateProfile": "Update Profile",
     "dangerZone": "Danger Zone",
     "logOut": "Log Out",
-    "logOutDescription": "Simulate logging out of the application."
+    "logOutDescription": "Sign out of your account."
   },
   "Resources": {
     "title": "Resource Library",
@@ -113,5 +113,36 @@
     "reframeTitle": "Reframe Your Thought",
     "reframeDescription": "Here is a more balanced and compassionate way to look at the situation.",
     "startOverButton": "Start a New Exercise"
+  },
+  "Auth": {
+    "title": "Welcome to MannMitra",
+    "description": "Your space for mental wellness support. Sign in to continue.",
+    "emailTab": "Email",
+    "phoneTab": "Phone",
+    "nameLabel": "Name",
+    "namePlaceholder": "Enter your name",
+    "emailLabel": "Email",
+    "emailPlaceholder": "name@example.com",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "forgotPassword": "Forgot password?",
+    "signInButton": "Sign In",
+    "signUpButton": "Create Account",
+    "orContinueWith": "Or continue with",
+    "googleSignIn": "Google",
+    "privacyPolicy": "By continuing, you agree to our Privacy Policy and Terms of Service.",
+    "signInSuccess": "Signed in successfully!",
+    "signInError": "Sign-in failed. Please check your credentials.",
+    "signUpSuccess": "Account created successfully! Please check your email to verify.",
+    "signUpError": "Sign-up failed. Please try again.",
+    "passwordResetSent": "Password reset link sent to your email.",
+    "passwordResetError": "Failed to send password reset email.",
+    "errorRequired": "{field} is required",
+    "errorInvalidEmail": "Invalid email address",
+    "errorPasswordLength": "Password must be at least 8 characters",
+    "form.error.required": "This field is required",
+    "form.error.invalidEmail": "Please enter a valid email address.",
+    "form.error.passwordLength": "Password must be at least 8 characters long.",
+    "form.error.nameRequired": "Please enter your name."
   }
 }

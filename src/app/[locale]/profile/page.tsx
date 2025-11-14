@@ -13,23 +13,27 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { User } from 'lucide-react';
+import { User as UserIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-
-const user = {
-  displayName: 'Student',
-  email: 'student@example.com',
-  photoURL: '',
-};
+import { useUser, useAuth } from '@/firebase';
+import { signOut } from 'firebase/auth';
+import { useRouter } from 'next/navigation';
 
 export default function ProfilePage() {
   const t = useTranslations('Profile');
+  const { user } = useUser();
+  const auth = useAuth();
+  const router = useRouter();
 
-  const handleLogout = () => {
-    // Since auth is disabled, we can just navigate to a "logged out" state if one exists
-    // For now, we'll just log to the console.
-    console.log("User logged out (simulation)");
-    // In a real app with auth, you might do: router.push('/login');
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      // Redirect to login page after successful sign-out
+      router.push('/login');
+    } catch (error) {
+      console.error("Error signing out: ", error);
+      // Optionally, show an error toast to the user
+    }
   };
 
   return (
@@ -45,14 +49,14 @@ export default function ProfilePage() {
         <CardHeader>
           <div className="flex items-center gap-4">
             <Avatar className="h-20 w-20">
-              <AvatarImage src={user.photoURL || undefined} />
+              <AvatarImage src={user?.photoURL || undefined} />
               <AvatarFallback>
-                <User className="h-10 w-10" />
+                <UserIcon className="h-10 w-10" />
               </AvatarFallback>
             </Avatar>
             <div>
-              <CardTitle className="font-headline text-2xl">{user.displayName || 'Anonymous User'}</CardTitle>
-              <CardDescription>{user.email}</CardDescription>
+              <CardTitle className="font-headline text-2xl">{user?.displayName || 'Anonymous User'}</CardTitle>
+              <CardDescription>{user?.email}</CardDescription>
             </div>
           </div>
         </CardHeader>
@@ -62,11 +66,11 @@ export default function ProfilePage() {
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     <div className="space-y-2">
                         <Label htmlFor="displayName">{t('displayName')}</Label>
-                        <Input id="displayName" defaultValue={user.displayName || ''} />
+                        <Input id="displayName" defaultValue={user?.displayName || ''} />
                     </div>
                     <div className="space-y-2">
                         <Label htmlFor="email">{t('emailAddress')}</Label>
-                        <Input id="email" defaultValue={user.email || ''} disabled />
+                        <Input id="email" defaultValue={user?.email || ''} disabled />
                     </div>
                 </div>
                  <Button>{t('updateProfile')}</Button>

@@ -88,7 +88,7 @@
     "updateProfile": "प्रोफ़ाइल अपडेट करें",
     "dangerZone": "खतरा क्षेत्र",
     "logOut": "लॉग आउट",
-    "logOutDescription": "एप्लिकेशन से लॉग आउट करने का अनुकरण करें।"
+    "logOutDescription": "अपने खाते से साइन आउट करें।"
   },
   "Resources": {
     "title": "संसाधन पुस्तकालय",
@@ -113,5 +113,33 @@
     "reframeTitle": "अपने विचार को सुधारें",
     "reframeDescription": "स्थिति को देखने का यह एक अधिक संतुलित और दयालु तरीका है।",
     "startOverButton": "एक नया व्यायाम शुरू करें"
+  },
+    "Auth": {
+    "title": "मनमित्र में आपका स्वागत है",
+    "description": "मानसिक स्वास्थ्य सहायता के लिए आपका स्थान। जारी रखने के लिए साइन इन करें।",
+    "emailTab": "ईमेल",
+    "phoneTab": "फ़ोन",
+    "nameLabel": "नाम",
+    "namePlaceholder": "अपना नाम दर्ज करें",
+    "emailLabel": "ईमेल",
+    "emailPlaceholder": "नाम@example.com",
+    "passwordLabel": "पासवर्ड",
+    "passwordPlaceholder": "अपना पासवर्ड दर्ज करें",
+    "forgotPassword": "पासवर्ड भूल गए?",
+    "signInButton": "साइन इन करें",
+    "signUpButton": "खाता बनाएं",
+    "orContinueWith": "या इसके साथ जारी रखें",
+    "googleSignIn": "Google",
+    "privacyPolicy": "जारी रखकर, आप हमारी गोपनीयता नीति और सेवा की शर्तों से सहमत होते हैं।",
+    "signInSuccess": "सफलतापूर्वक साइन इन किया!",
+    "signInError": "साइन-इन विफल। कृपया अपनी जानकारी जांचें।",
+    "signUpSuccess": "खाता सफलतापूर्वक बन गया! कृपया सत्यापित करने के लिए अपना ईमेल जांचें।",
+    "signUpError": "साइन-अप विफल। कृपया फिर से प्रयास करें।",
+    "passwordResetSent": "पासवर्ड रीसेट लिंक आपके ईमेल पर भेजा गया।",
+    "passwordResetError": "पासवर्ड रीसेट ईमेल भेजने में विफल।",
+    "form.error.required": "यह फ़ील्ड आवश्यक है",
+    "form.error.invalidEmail": "कृपया एक मान्य ईमेल पता दर्ज करें।",
+    "form.error.passwordLength": "पासवर्ड कम से कम 8 अक्षर का होना चाहिए।",
+    "form.error.nameRequired": "कृपया अपना नाम दर्ज करें।"
   }
 }

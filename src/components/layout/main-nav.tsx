@@ -15,12 +15,14 @@ import {
   SidebarFooter,
   SidebarSeparator,
 } from '@/components/ui/sidebar';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useTranslations } from 'next-intl';
+import { useUser } from '@/firebase';
 
 export function MainNav() {
   const pathname = usePathname();
   const t = useTranslations('Sidebar');
+  const { user } = useUser();
 
   const menuItems = [
     { href: '/dashboard', label: t('dashboard'), icon: LayoutDashboard },
@@ -65,11 +67,12 @@ export function MainNav() {
                     <Link href="/profile" passHref>
                         <SidebarMenuButton isActive={pathname.endsWith('/profile')} tooltip={t('profile')}>
                              <Avatar className="h-6 w-6">
+                                <AvatarImage src={user?.photoURL || undefined} />
                                 <AvatarFallback>
                                     <UserIcon className="h-4 w-4"/>
                                 </AvatarFallback>
                             </Avatar>
-                            <span>{t('profile')}</span>
+                            <span>{user?.displayName || t('profile')}</span>
                         </SidebarMenuButton>
                     </Link>
                 </SidebarMenuItem>
