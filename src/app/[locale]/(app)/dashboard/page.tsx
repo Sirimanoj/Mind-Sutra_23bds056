@@ -1,5 +1,4 @@
 
-
 'use client';
 import React from 'react';
 import Link from 'next/link';
@@ -21,15 +20,14 @@ export default function DashboardPage() {
         </p>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-3">
-        <div className="lg:col-span-2">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="md:col-span-2">
           <MoodTracker />
         </div>
-        <div className="flex flex-col gap-6">
-          <QuickActions />
-          <DailyTip />
-        </div>
+        <DailyTip />
       </div>
+      <QuickActions />
+
     </div>
   );
 }
