@@ -118,8 +118,13 @@ export function AuthForm() {
     setIsGoogleLoading(true);
     const provider = new GoogleAuthProvider();
     try {
-      // The onAuthStateChanged listener will handle the redirect and Firestore creation
-      await signInWithPopup(auth, provider);
+      const result = await signInWithPopup(auth, provider);
+      // The onAuthStateChanged listener will handle redirect, but we can ensure Firestore doc is created.
+      // Check if this is a new user
+      // const isNewUser = getAdditionalUserInfo(result)?.isNewUser;
+      // if (isNewUser) {
+        handleAuthSuccess(result.user);
+      // }
     } catch (error) {
       handleAuthError(error, 'signIn');
     } finally {
