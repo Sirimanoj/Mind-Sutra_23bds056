@@ -20,7 +20,7 @@ export default async function LoginPage() {
                 </div>
                 <h1 className="font-headline text-3xl font-bold">MannMitra</h1>
             </div>
-          <p className="text-muted-foreground">{t('description')}</p>
+          <p className="text-muted-foreground">{t.description}</p>
         </div>
         <AuthForm />
       </div>
