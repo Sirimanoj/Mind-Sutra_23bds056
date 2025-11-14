@@ -137,9 +137,13 @@
     "signUpError": "साइन-अप विफल। कृपया फिर से प्रयास करें।",
     "passwordResetSent": "पासवर्ड रीसेट लिंक आपके ईमेल पर भेजा गया।",
     "passwordResetError": "पासवर्ड रीसेट ईमेल भेजने में विफल।",
-    "form.error.required": "यह फ़ील्ड आवश्यक है",
-    "form.error.invalidEmail": "कृपया एक मान्य ईमेल पता दर्ज करें।",
-    "form.error.passwordLength": "पासवर्ड कम से कम 8 अक्षर का होना चाहिए।",
-    "form.error.nameRequired": "कृपया अपना नाम दर्ज करें।"
+    "form": {
+        "error": {
+            "required": "यह फ़ील्ड आवश्यक है",
+            "invalidEmail": "कृपया एक मान्य ईमेल पता दर्ज करें।",
+            "passwordLength": "पासवर्ड कम से कम 8 अक्षर का होना चाहिए।",
+            "nameRequired": "कृपया अपना नाम दर्ज करें।"
+        }
+    }
   }
 }

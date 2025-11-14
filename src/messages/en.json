@@ -137,12 +137,13 @@
     "signUpError": "Sign-up failed. Please try again.",
     "passwordResetSent": "Password reset link sent to your email.",
     "passwordResetError": "Failed to send password reset email.",
-    "errorRequired": "{field} is required",
-    "errorInvalidEmail": "Invalid email address",
-    "errorPasswordLength": "Password must be at least 8 characters",
-    "form.error.required": "This field is required",
-    "form.error.invalidEmail": "Please enter a valid email address.",
-    "form.error.passwordLength": "Password must be at least 8 characters long.",
-    "form.error.nameRequired": "Please enter your name."
+    "form": {
+        "error": {
+            "required": "This field is required",
+            "invalidEmail": "Please enter a valid email address.",
+            "passwordLength": "Password must be at least 8 characters long.",
+            "nameRequired": "Please enter your name."
+        }
+    }
   }
 }
