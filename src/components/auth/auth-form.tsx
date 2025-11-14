@@ -45,8 +45,8 @@ export function AuthForm() {
 
   const formSchema = z.object({
     name: z.string().optional(),
-    email: z.string().email({ message: t('form.error.invalidEmail') }),
-    password: z.string().min(8, { message: t('form.error.passwordLength') }),
+    email: z.string().email({ message: t('form.invalidEmail') }),
+    password: z.string().min(8, { message: t('form.passwordLength') }),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -76,7 +76,7 @@ export function AuthForm() {
   const handleAuthError = (error: any, type: 'signIn' | 'signUp') => {
     console.error(`${type} error:`, error);
     let description = error.message;
-    if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+    if (error.code === 'auth/invalid-credential' || error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
         description = t('signInErrorInvalid');
     } else if (error.code === 'auth/email-already-in-use') {
         description = t('signUpErrorEmailInUse');
@@ -93,7 +93,7 @@ export function AuthForm() {
     try {
       if (activeTab === 'signup') {
         if (!values.name) {
-            form.setError("name", { type: "manual", message: t('form.error.nameRequired') });
+            form.setError("name", { type: "manual", message: t('form.nameRequired') });
             setIsLoading(false);
             return;
         }
@@ -130,7 +130,7 @@ export function AuthForm() {
   const handlePasswordReset = async () => {
     const email = form.getValues('email');
     if (!email) {
-      form.setError('email', { type: 'manual', message: t('form.error.required') });
+      form.setError('email', { type: 'manual', message: t('form.required') });
       return;
     }
     try {
