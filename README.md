@@ -100,7 +100,7 @@ firebase deploy
 
 ## Usage
 
-- Visit the web app URL for webapp: `(https://studio--studio-9057087504-c0bb3.us-central1.hosted.app)`
+- Visit the web app URL for webapp: `https://studio--studio-9057087504-c0bb3.us-central1.hosted.app`
 - Install the PWA (offline mode) from the web browser.
 - Use the app on your phone via Expo QR code.
 - Register, login (with email/google/phone), choose your language, and start using features: AI chat, mood tracking, crisis help, access resources, and book counselor.
